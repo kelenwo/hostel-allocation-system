@@ -1,0 +1,175 @@
+{% extends 'main.html' %}
+
+{% block maincontent %}
+
+        <div class="container-fluid">
+
+          <div class="row">
+          </div>
+
+          <!-- Content Row -->
+
+          <div class="row">
+
+            <!--  -->
+            
+            <div class="col-xl-12 col-lg-12">
+              <div class="card border-top-info shadow mb-4">
+                  <div class="card-body p-5 ">
+                  <div class="col-md-6">
+                    <h3 class="h3 mb-0 text-gray-800">Available Spaces</h3>
+                    <hr/>
+                  </div> 
+
+            <div class="row">
+              <div class="col-md-12 my-2">
+                <label>Hostel <i class="fa fa-spinner fa-spin text-success" id="loading"></i></label>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1"><i class="fa fa-th-large"></i></span>
+                  </div>
+                  <select class="form-control" id="hostel">
+                    <option>-- select hostel --</option>
+                    <option value="Male Presidential Hostel">Male Presidential Hostel</option>
+                    <option value="Female Presidential Hostel">Female Presidential Hostel</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="col-md-6 my-3 d-none">
+                <label>Room</label>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1"><i class="fa fa-th-large"></i></span>
+                  </div>
+                  <select class="form-control">
+                    <option>-- select room --</option>
+                    <option value="male">Room 1</option>
+                    <option value="female">Room 2</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-12 d-none" id="showRooms">
+                <div class="card shadow p-5 my-3">
+                  <div class="col-md-4">
+                    <h6 class="mb-0 text-gray-800">Available Spaces</h6>
+                    <hr/>
+                  </div> 
+                  <div class="">
+                    <div class="border row">
+                        <div class="col-md-1 btn btn-success text-center border border-right-info px-1 py-3">
+                          RM 1
+                        </div>
+                        <div class="col-md-1 btn btn-success text-center border border-right-info px-1 py-3">
+                          RM 2
+                        </div>
+                        <div class="col-md-1 btn btn-success text-center border border-right-info px-1 py-3">
+                          RM 3
+                        </div>
+                        <div class="col-md-1 btn btn-success text-center border border-right-info px-1 py-3">
+                          RM 4
+                        </div>
+                        <div class="col-md-1 btn btn-success text-center border border-right-info px-1 py-3">
+                          RM 5
+                        </div>
+                        <div class="col-md-1 btn btn-success text-center border border-right-info px-1 py-3">
+                          RM 6
+                        </div>
+                        <div class="col-md-1 btn btn-success text-center border border-right-info px-1 py-3">
+                          RM 7
+                        </div>
+                        <div class="col-md-1 btn btn-danger text-white text-center border border-right-info px-1 py-3">
+                          RM 8
+                        </div>
+                        <div class="col-md-1 btn btn-success text-center border border-right-info px-1 py-3">
+                          RM 9
+                        </div>
+                        <div class="col-md-1 btn btn-success text-center border border-right-info px-1 py-3">
+                          RM 10
+                        </div>
+                        <div class="col-md-1 btn btn-success text-center border border-right-info px-1 py-3">
+                          RM 11
+                        </div>
+                        <div class="col-md-1 btn btn-success text-center border border-right-info px-1 py-3">
+                          RM 12
+                        </div>
+
+                        <div class="col-md-12 text-center border border-right-info p-4">
+                          <h3 id="roomId"></h3>
+                        </div>
+                        <div class="col-md-1 btn btn-danger text-center border border-right-info px-1 py-3">
+                          RM 13
+                        </div>
+                        <div class="col-md-1 btn btn-success text-center border border-right-info px-1 py-3">
+                          RM 14
+                        </div>
+                        <div class="col-md-1 btn btn-success text-center border border-right-info px-1 py-3">
+                          RM 15
+                        </div>
+                        <div class="col-md-1 btn btn-success text-center border border-right-info px-1 py-3">
+                          RM 16
+                        </div>
+                        <div class="col-md-1 btn btn-danger text-white text-center border border-right-info px-1 py-3">
+                          RM 17
+                        </div>
+                        <div class="col-md-1 btn btn-success text-center border border-right-info px-1 py-3">
+                          RM 18
+                        </div>
+                        <div class="col-md-1 btn btn-success text-center border border-right-info px-1 py-3">
+                          RM 19
+                        </div>
+                        <div class="col-md-1 btn btn-success text-center border border-right-info px-1 py-3">
+                          RM 20
+                        </div>
+                        <div class="col-md-1 btn btn-success text-center border border-right-info px-1 py-3">
+                          RM 21
+                        </div>
+                        <div class="col-md-1 btn btn-success text-center border border-right-info px-1 py-3">
+                          RM 22
+                        </div>
+                        <div class="col-md-1 btn btn-success text-center border border-right-info px-1 py-3">
+                          RM 23
+                        </div>
+                        <div class="col-md-1 btn btn-success text-center border border-right-info px-1 py-3">
+                          RM 24
+                        </div>
+                      </div>
+
+                  </div>
+                </div>
+                <div class="mx-2">
+                  <a class="btn btn-secondary btn-block" href="apply.html">Apply For Space &nbsp;&nbsp;<i class="fa fa-external-link-alt"></i></a>
+                </div>
+              </div>
+
+<!-- 
+                   <div class="col-md-6">
+                        <button class="btn btn-primary px-5" type="button">Validate RRR &nbsp;<i class="fa fa-cog fa-spin"></i></button>
+                      </div> -->
+                      
+                      </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+      <script>
+
+        $(document).ready(function() {
+          $('#loading').hide();
+        
+             $('#hostel').on('change',function() {
+              $('#loading').show();
+              var roomId = this.value;
+              window.setTimeout(function (){
+                $('#loading').hide();
+                $('#roomId').text(roomId);
+                $('#showRooms').removeClass('d-none');
+        
+              }, 1000);
+             });
+        });
+        </script>
+{% endblock %} 

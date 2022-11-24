@@ -1,0 +1,170 @@
+html, body {
+  height: 100%;
+  width: 100%;
+  /* font-size: 20px !important; */
+}
+
+
+  .login-rect {
+    position: absolute;
+    width: 45%;
+    height: 80%;
+    left: -8%;
+    top: -12%;
+    -ms-transform: rotate(65deg); /* IE 9 */
+    transform: rotate(65deg);
+    background: #F39930;
+    border-radius: 600px;
+}
+
+
+.login-rect-outline {
+  box-sizing: border-box;
+  position: absolute;
+  width: 50%;
+  height: 90%;
+  left: -11%;
+  top: -16%;
+  -ms-transform: rotate(65deg); /* IE 9 */
+  transform: rotate(65deg);
+  border: 4px solid #F39930;
+  border-radius: 600px;
+  }
+
+.outer-dot {
+  position: absolute;
+width: 86px;
+height: 86px;
+left: 25%;
+top: 75%;
+border-radius: 600px;
+background: #F39930;
+}
+
+.outer-dot-2 {
+  position: absolute;
+width: 46px;
+height: 46px;
+left: 32%;
+top: 84%;
+border-radius: 600px;
+background: #F39930;
+}
+
+.login-right-sidebar {
+  position: absolute;
+  width: 55%;
+  height: 100%;
+  right: 0;
+  bottom: 0px;
+  /* background: #FFF8F8; */
+  /* border-radius: 97px 0px 0px 97px; */
+}
+.h6-s::before {
+  content: " ";
+  position: absolute;
+  border-top: 6px solid;
+  width: 5%;
+}
+
+.b-after::before {
+  content: " ";
+  position: absolute;
+  border-top: 2px solid;
+  width: 5%;
+  bottom: 80%;
+}
+
+.f-montserrat {
+  font-family: Montserrat;
+}
+
+.f-montserrat-alt {
+  font-family: MontserratAlt Black
+}
+.f-montserrat-black {
+  font-family: Montserrat Black;
+}
+
+.entry-text {
+  position: absolute;
+  left: 0%;
+  color: white;
+  /* top: -16%; */
+}
+
+@font-face {
+  font-family: Bungee;
+  font-weight: bold;
+  src: url('../fonts/bungee/Bungee-Regular.otf');
+}
+@font-face {
+  font-family: CaviarDreams;
+  src: url('../fonts/caviar/CaviarDreams.ttf');
+}
+@font-face {
+  font-family: CaviarDreams Bold;
+  src: url('../fonts/caviar/Caviar_Dreams_Bold.ttf');
+}
+@font-face {
+font-family: Open Sans;
+src: url(../fonts/opensans-regular.ttf);
+}
+
+@font-face {
+font-family: Open Sans-Bold;
+src: url('../fonts/OpenSans-Bold.ttf');
+}
+@font-face {
+font-family: Open Sans-Italic;
+src: url('../fonts/OpenSans-Italic.ttf');
+}
+@font-face {
+font-family: Ubuntu;
+src: url('../fonts/ubuntu/Ubuntu-Regular.ttf');
+}
+
+@font-face {
+font-family: Ubuntu-Bold;
+src: url('../fonts/ubuntu/Ubuntu-Bold.ttf');
+}
+@font-face {
+  font-family: Arcon;
+  src: url('../fonts/arcon/Arcon-Regular.otf');
+}
+@font-face {
+  font-family: Baloo;
+  src: url('../fonts/Baloo-Regular.ttf');
+}
+@font-face {
+  font-family: Cunia;
+  src: url('../fonts/cunia.ttf');
+}
+@font-face {
+  font-family: Montserrat;
+  src: url('../fonts/montserrat/Montserrat-Regular.otf');
+}
+@font-face {
+  font-family: Montserrat SemiBold;
+  src: url('../fonts/montserrat/Montserrat-SemiBold.otf');
+}
+@font-face {
+  font-family: Montserrat Bold;
+  src: url('../fonts/montserrat/Montserrat-Bold.otf');
+}
+@font-face {
+  font-family: Montserrat Black;
+  src: url('../fonts/montserrat/Montserrat-Black.otf');
+}
+@font-face {
+  font-family: MontserratAlt Black;
+  src: url('../fonts/montserrat/MontserratAlternates-Black.otf');
+}
+@font-face {
+  font-family: Comfortaa;
+  src: url('../fonts/comfortaa/Comfortaa_Regular.ttf');
+}
+@font-face {
+  font-family: Comfortaa Bold;
+  src: url('../fonts/comfortaa/Comfortaa_Bold.ttf');
+}

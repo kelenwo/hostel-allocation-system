@@ -1,0 +1,25 @@
+{
+    "hostel" : [
+        {
+            "id" : "mph",
+            "name": "Male Presidential Hostel"
+        },
+        {
+            "id": "fph",
+            "name": "Female Presidential Hostel"
+
+        }
+    ],
+    "rooms" : [
+        {
+            "hostel": "mph",
+            "rooms": ["A1","A2","B1","B2","C1","C2","D1","D2","E1","E2","F1","F2"] 
+        },
+        {
+            "hostel": "fph",
+            "rooms": ["A1","A2","B1","B2","C1","C2","D1","D2","E1","E2","F1","F2"] 
+        }
+    ],
+    "room" : ["Room 1","Room 2", "room 3", "room 4", "room 5", "room 6"] 
+
+}

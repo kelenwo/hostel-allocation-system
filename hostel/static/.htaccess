@@ -1,0 +1,4 @@
+#<FilesMatch ".(eot|ttf|otf|woff|png|jpg|jpeg)">
+#    Header set Access-Control-Allow-Origin "*"
+#</FilesMatch>
+

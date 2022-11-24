@@ -1,0 +1,196 @@
+{% extends 'main.html' %}
+
+{% block maincontent %}
+
+        <div class="container-fluid">
+
+          <div class="row">
+          </div>
+
+          <!-- Content Row -->
+
+          <div class="row">
+
+            <!--  -->
+            
+            <div class="col-xl-12 col-lg-12">
+              <div class="card border-top-info shadow mb-4">
+                  <div class="card-body p-5 ">
+                  <div class="col-md-6">
+                    <h3 class="h3 mb-0 text-gray-800">Apply for hostel</h3>
+                    <hr/>
+                  </div> 
+
+            <div class="row">
+              <div class="col-md-6 my-3">
+                <label>Hostel</label>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1"><i class="fa fa-th-large"></i></span>
+                  </div>
+                  <select class="form-control" id="hostel">
+                    <option>-- select hostel --</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="col-md-6 my-3">
+                <label>Room <i class="fa text-success fa-spinner fa-spin" id="loadingRoom"></i></label>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1"><i class="fa fa-th-large"></i></span>
+                  </div>
+                  <select class="form-control text-capitalize" id="rooms">
+                    <option>-- select room --</option>
+
+                  </select>
+                </div>
+              </div>
+
+              <div class="col-md-12 d-none" id="showRooms">
+                <div class="card shadow p-5 my-3">
+                  <div class="col-md-3">
+                    <h6 class="mb-0 text-gray-800 text-capitalize " id="roomId"></h6>
+                    <hr/>
+                  </div> 
+                  <div class="">
+                    <div class="row">
+                      <div class="border row">
+                        <div class="col-md-5 row">
+                          <div class="col-md-6">
+                            <div class="col-md-12 btn btn-success text-center border border-right-info px-4 py-4">
+                              A1
+                            </div>
+                            <div class="col-md-12 btn btn-success text-center border border-right-info px-4 py-4">
+                              A2
+                            </div>
+                          </div>
+                          <div class="col-md-6">
+                            <div class="col-md-12 btn btn-success text-center border border-right-info px-4 py-4">
+                              B1
+                            </div>
+                            <div class="col-md-12 btn btn-success text-center border border-right-info px-4 py-4">
+                              B2
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="col-md-2">
+                          
+                        </div>
+
+                        <div class="col-md-5 row">
+                          <div class="col-md-6">
+                            <div class="col-md-12 btn btn-success text-center border border-right-info px-4 py-4">
+                              C1
+                            </div>
+                            <div class="col-md-12 btn btn-success text-center border border-right-info px-4 py-4">
+                              C2
+                            </div>
+                          </div>
+                          <div class="col-md-6">
+                            <div class="col-md-12 btn btn-success text-center border border-right-info px-4 py-4">
+                              D1
+                            </div>
+                            <div class="col-md-12 btn btn-success text-center border border-right-info px-4 py-4">
+                              D2
+                            </div>
+                          </div>
+                        </div>
+
+                      </div>
+
+                      </div>
+
+                  </div>
+                </div>
+              </div>
+
+
+                   <div class="col-md-6">
+                        <button class="btn btn-primary px-5" type="button" id="submit">Submit &nbsp;<i class="fa fa-cog fa-spin" id="loading"></i></button>
+                      </div>
+                      
+                      </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+<script>
+   var config = {
+    "hostel" : [
+        {
+            "id" : "mph",
+            "name": "Male Presidential Hostel"
+        },
+        {
+            "id": "fph",
+            "name": "Female Presidential Hostel"
+
+        }
+    ],
+    "rooms" : [
+        {
+            "hostel": "mph",
+            "rooms": ["A1","A2","B1","B2","C1","C2","D1","D2","E1","E2","G1","G2"] 
+        },
+        {
+            "hostel": "fph",
+            "rooms": ["A1","A2","B1","B2","C1","C2","D1","D2","E1","E2","G1","G2"] 
+        }
+    ],
+    "room" : ["Room 1","Room 2", "room 3", "room 4", "room 5", "room 6"] 
+
+};
+</script>
+<script>
+
+$(document).ready(function() {
+  $('#loading').hide();
+  $('#loadingRoom').hide();
+
+      for (let i = 0; i < config.hostel.length; i++) { 
+          $('#hostel').append($('<option>', {
+              value: config.hostel[i]['id'],
+              text: config.hostel[i]['name'],
+            }));
+     }
+
+     $('#hostel').on('change',function() {
+      $('#loadingRoom').show();
+      var res = $('#hostel').val();
+      window.setTimeout(function (){
+        $('#loadingRoom').hide();
+        for (let i = 0; i < config.room.length; i++) { 
+        $('#rooms').append($('<option>', {
+              value: config.room[i],
+              text: config.room[i],
+            }));
+     }
+      }, 1000);
+
+     });
+
+     $('#rooms').on('change',function() {
+      $('#loadingRoom').show();
+      var roomId = this.value;
+      window.setTimeout(function (){
+        $('#loadingRoom').hide();
+        $('#roomId').text(roomId);
+        $('#showRooms').removeClass('d-none');
+
+      }, 1000);
+
+    //   var res = $('#hostel').val();
+    //   for (let i = 0; i < config.room.length; i++) { 
+    //     $('#rooms').append($('<option>', {
+    //           value: config.rooms[i],
+    //           text: config.room[i],
+    //         }));
+    //  }
+     });
+});
+</script>
+
+{% endblock %} 

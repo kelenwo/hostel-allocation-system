@@ -1,0 +1,177 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Hostel Allocation System</title>
+</title>
+
+  <!-- Custom fonts for this template-->
+  <link href="{% static 'css/all.css' %}" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+  <!-- Custom styles for this template-->
+  <link href="{% static 'css/sb-admin-2.css' %}" rel="stylesheet">
+  <!-- Bootstrap core JavaScript-->
+  <script src="{% static 'js/jquery.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap.bundle.min.js' %}""></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="{% static 'js/jquery.easing.min.js' %}"></script>
+
+  <!-- Custom scripts for all pages-->
+  <script src="{% static 'js/sb-admin-2.min.js' %}"></script>
+  <script src="{% static 'js/jquery.dataTables.min.js' %}"></script>
+
+  <!-- Page level plugins -->
+  <link href="{% static 'css/jquery.dataTables.min.css' %}" rel="stylesheet">
+<style>
+  .cursor-hand {
+    cursor: pointer !important;
+  }
+   td {
+    color: #444 !important;
+  }
+</style>
+</head>
+
+<body id="page-top">
+
+  <!-- Page Wrapper -->
+  <div id="wrapper">
+
+    <!-- Sidebar -->
+    <ul class="navbar-nav bg-gradient-white sidebar sidebar-dark accordion" id="accordionSidebar">
+
+      <!-- Sidebar - Brand -->
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="">
+        <div class="sidebar-brand-text text-primary mx-3 mt-2 d-none"><h6 style="text-transform:capitalize;">Student's Portal</h6></div>
+      </a>
+
+      <!-- Divider -->
+      <!-- <hr class="sidebar-divider my-0"> -->
+
+      <!-- Nav Item - Dashboard -->
+      <li class="active py-3">
+        <a class="nav-link text-center" href="/">
+          <span class="fa-stack bg-text-default fa-2x" style="font-size: 1.5em !important;">
+            <i class="fas fa-circle fa-stack-2x"></i>
+            <i class="fa fa-tachometer-alt fa-stack-1x fa-inverse"></i>
+            </span></i><br>
+          <span>Dashboard</span></a>
+      </li>
+
+      <hr class="sidebar-divider">
+      <li class="py-3">
+  <a class="nav-link collapsed text-center" href="/dashboard/available-spaces" aria-expanded="true" aria-controls="collapseTwo">
+    <span class="fa-stack bg-text-default fa-2x" style="font-size: 1.5em !important;">
+      <i class="fas fa-circle fa-stack-2x"></i>
+      <i class="fas fa-bed fa-stack-1x fa-inverse"></i>
+      </span><br>
+    <span>Available Spaces</span>
+  </a>
+</li>
+      <hr class="sidebar-divider">
+      <li class="py-2">
+        <a class="nav-link collapsed text-center" href="/dashboard/hostel-application" aria-expanded="true" aria-controls="collapseTwo">
+          <span class="fa-stack bg-text-default fa-2x" style="font-size: 1.5em !important;">
+            <i class="fas fa-circle fa-stack-2x"></i>
+            <i class="fa fa-bed fa-stack-1x fa-inverse"></i>
+            </span><br>
+          <span>Apply for hostel</span>
+        </a>
+      </li>
+      <hr class="sidebar-divider">
+      <li class="py-3">
+  <a class="nav-link collapsed text-center" href="/dashboard/application-status" aria-expanded="true" aria-controls="collapseTwo">
+    <span class="fa-stack bg-text-default fa-2x" style="font-size: 1.5em !important;">
+      <i class="fas fa-circle fa-stack-2x"></i>
+      <i class="fas fa-tasks fa-stack-1x fa-inverse"></i>
+      </span> <br>
+    <span>Check Status</span>
+  </a>
+</li>
+
+
+      <hr class="sidebar-divider d-none d-md-block">
+
+      <!-- Sidebar Toggler (Sidebar) -->
+      <div class="text-center d-none d-md-inline mt-3">
+        <button class="rounded-circle border-0" id="sidebarToggle"></button>
+      </div>
+
+    </ul>
+    <!-- End of Sidebar -->
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+          <!-- Main Content -->
+          <div id="content">
+
+            <!-- Topbar -->
+            <nav class="navbar navbar-expand navbar-light bg-white mx-4 topbar mb-4 static-top shadow">
+
+              <!-- Sidebar Toggle (Topbar) -->
+              <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                <i class="fa fa-bars"></i>
+              </button>
+
+              <!-- Topbar Search -->
+
+
+              <!-- Topbar Navbar -->
+              <ul class="navbar-nav ml-auto">
+                <div class="topbar-divider d-none d-sm-block"></div>
+
+                <!-- Nav Item - User Information -->
+                <li class="nav-item dropdown no-arrow">
+                  <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="mr-2 d-none d-lg-inline text-gray-600 small" style="text-transform:capitalize; font-weight:bold;">Jane doe</span>
+                    <img class="img-profile rounded-circle" src="{% static 'img/xlabs.png' %}">
+                  </a>
+                  <!-- Dropdown - User Information -->
+                  <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                    <!-- <a class="dropdown-item" href="dashboard/profile">
+                      <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                      Profile
+                    </a> -->
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="logout">
+                      <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                      Logout
+                    </a>
+                  </div>
+                </li>
+
+              </ul>
+
+            </nav>
+            <!-- End of Topbar -->
+            {% block maincontent %}
+
+            {% endblock %}
+
+        </div>
+        <!-- /.container-fluid -->
+</body>
+
+</html>
+
+      <!-- Footer -->
+      <footer class="sticky-footer bg-white">
+        <div class="container my-auto">
+          <div class="copyright text-center my-auto">
+            <span>Copyright &copy; Hostel Allocation System 2022</span>
+
+          </div>
+        </div>
+      </footer>
+      <!-- End of Footer -->

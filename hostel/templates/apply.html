@@ -1,0 +1,116 @@
+{% extends 'main.html' %}
+
+{% block maincontent %}
+        <div class="container-fluid">
+
+          <div class="row">
+          </div>
+
+          <!-- Content Row -->
+
+          <div class="row">
+
+            <!--  -->
+            
+            <div class="col-xl-12 col-lg-12">
+              <div class="card border-top-info shadow mb-4">
+                  <div class="card-body p-5 ">
+                  <div class="col-md-6">
+                    <h3 class="h3 mb-0 text-gray-800">Hostel Application</h3>
+                    <hr/>
+                  </div> 
+
+            <div class="row">
+                    <div class="col-md-6">
+                      <!-- <input dtype="text" class="form-control bg-white" readonly > -->
+                      <label>Student's Name</label>
+                      <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text" id="basic-addon1"><i class="fa fa-th-large"></i></span>
+                        </div>
+                        <input type="text" class="form-control" placeholder="Enobong Umanah" aria-label="Username" aria-describedby="basic-addon1">
+                      </div>
+                    </div>
+
+                    <div class="col-md-6">                 
+                      <label>Registration Number</label>
+                      <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text" id="basic-addon1"><i class="fa fa-th-large"></i></span>
+                        </div>
+                        <input type="text" class="form-control" placeholder="16/EG/CO/892" aria-label="Username" aria-describedby="basic-addon1">
+                      </div></div>
+
+                      <div class="col-md-6 my-3">
+                        <label>Semester</label>
+                        <div class="input-group mb-3">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1"><i class="fa fa-th-large"></i></span>
+                          </div>
+                          <select class="form-control">
+                            <option>First/Second Semester</option>
+                          </select>
+                        </div>
+                      </div>
+  
+                      <div class="col-md-6 my-3">
+                          <label>Session</label>
+                          <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text" id="basic-addon1"><i class="fa fa-th-large"></i></span>
+                            </div>
+                            <select class="form-control">
+                              <option>2021/2022 Session</option>
+                            </select>
+                          </div>
+                      </div>
+
+                      <div class="col-md-12">
+                        <label>RRR</label><br>
+                        <small class="text-primary">(Input Your fee payment RRR to verify your payment status)</small>
+                        <br>
+                        <div class="input-group mb-3">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1"><i class="fa fa-th-large"></i></span>
+                          </div>
+                          <input type="text" class="form-control" placeholder="RRR" aria-label="Username" aria-describedby="basic-addon1">
+                        </div>
+                    </div>
+                    <div class="col-md-12 my-1 d-none" id="validated">
+                      <span class="text-success">RRR validated, Redirecting...</span>
+                    </div>
+
+
+                      <div class="col-md-6">
+                        <button class="btn btn-primary px-5" type="button" id="submit">Validate RRR &nbsp;<i class="fa fa-cog fa-spin" id="loading"></i></button>
+                      </div>
+                      
+                      </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        <!-- /.container-fluid -->
+
+
+<script>
+  $(document).ready(function() {
+    $('#loading').hide();
+
+    $('#submit').on('click',function() {
+      $('#loading').show();
+      window.setTimeout(function (){
+        $('#loading').hide();
+        $('#validated').removeClass('d-none');
+        window.setTimeout(function (){
+          window.location.href = '/dashboard/hostel-application/apply';
+        }, 800);
+
+      }, 500);
+
+     });
+  });
+</script>
+{% endblock %} 

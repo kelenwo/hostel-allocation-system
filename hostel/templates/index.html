@@ -6,9 +6,6 @@
   <!-- Content Row -->
 
   <div class="row">
-
-    <!--  -->
-    
     <div class="col-xl-12 col-lg-12">
       <div class="card border-top-info shadow mb-4">
           <div class="card-body p-5 ">
@@ -25,7 +22,7 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text" id="basic-addon1"><i class="fa fa-th-large"></i></span>
                 </div>
-                <input type="text" class="form-control" placeholder="Enobong Umanah" aria-label="Username" aria-describedby="basic-addon1">
+                <input type="text" class="form-control" placeholder="{{ session.name }}" aria-label="Username" aria-describedby="basic-addon1">
               </div>
             </div>
 
@@ -35,7 +32,7 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text" id="basic-addon1"><i class="fa fa-th-large"></i></span>
                 </div>
-                <input type="text" class="form-control" placeholder="16/EG/CO/892" aria-label="Username" aria-describedby="basic-addon1">
+                <input type="text" class="form-control" placeholder="{{ session.reg_number }}" aria-label="Username" aria-describedby="basic-addon1">
               </div></div>
 
             <div class="col-md-6 my-3">
@@ -44,7 +41,7 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text" id="basic-addon1"><i class="fa fa-th-large"></i></span>
                 </div>
-                <input type="text" class="form-control" placeholder="Computer Engineering" aria-label="Username" aria-describedby="basic-addon1">
+                <input type="text" class="form-control" placeholder="{{ session.department }}" aria-label="Username" aria-describedby="basic-addon1">
               </div>
             </div>
 
@@ -54,7 +51,7 @@
                   <div class="input-group-prepend">
                     <span class="input-group-text" id="basic-addon1"><i class="fa fa-th-large"></i></span>
                   </div>
-                  <input type="text" class="form-control" placeholder="Engineering" aria-label="Username" aria-describedby="basic-addon1">
+                  <input type="text" class="form-control" placeholder="{{ session.faculty }}" aria-label="Username" aria-describedby="basic-addon1">
                 </div>
               </div>
 
@@ -64,7 +61,7 @@
                   <div class="input-group-prepend">
                     <span class="input-group-text" id="basic-addon1"><i class="fa fa-th-large"></i></span>
                   </div>
-                  <input type="text" class="form-control" placeholder="First Semester" aria-label="Username" aria-describedby="basic-addon1">
+                  <input type="text" class="form-control" placeholder="{{ session.semester }}" aria-label="Username" aria-describedby="basic-addon1">
                 </div>
               </div>
 

@@ -10,7 +10,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Admin - <?=$title?></title>
+  <title>Hostel Allocation System - Login</title>
 
   <!-- Custom fonts for this template-->
 
@@ -63,6 +63,7 @@
         
         <div class="login-right-sidebar pt-2 mr-5">
           <div class="card shadow-lg m-5 p-5" style="border-top: 10px #F39930 solid;">
+            <form id="loginForm">
             <div class="row">
               <div class="col-md-12 text-center my-3">
                 <h2>Student Login</h2>
@@ -74,7 +75,8 @@
                   <div class="input-group-prepend">
                     <span class="input-group-text" id="basic-addon1"><i class="fa fa-user"></i></span>
                   </div>
-                  <input type="text" class="form-control" placeholder="Registration Number" aria-label="Username" aria-describedby="basic-addon1">
+                  <input type="text" name="reg_number" class="form-control text-uppercase" placeholder="Registration Number" >
+                  {% csrf_token %}
                 </div>
               </div>
 
@@ -84,15 +86,18 @@
                   <div class="input-group-prepend">
                     <span class="input-group-text" id="basic-addon1"><i class="fa fa-key"></i></span>
                   </div>
-                  <input type="password" class="form-control" placeholder="Passcode" aria-label="Username" aria-describedby="basic-addon1">
+                  <input type="password" name="passcode" class="form-control" placeholder="Passcode">
                 </div>
               </div>
-              <div class="col-md-12 my-3">
-                <button type="button" class="btn btn-primary"><i class="fas fa-sign-in-alt"></i> Student Login <i class="fa fa-cog fa-spin"></i></button>
-        
-
+              <div class="col-md-12 my-2">
+                <button type="button" class="btn btn-primary" id="submit"><i class="fas fa-sign-in-alt"></i> Student Login <i class="fa fa-cog fa-spin"></i></button>
+              </div>
+              <div class="col-md-8 offset-2 text-center">
+                <hr/>
+                <span id="response"></span>
               </div>
             </div>
+          </form>
           </div>
 
 
@@ -100,3 +105,31 @@
     </div>
 </body>
 </html>
+
+<script>
+  $(document).ready(function() {
+    $('.fa-spin').hide();
+
+    $('#submit').on('click', function() {
+      $('.fa-spin').show();
+      $.ajax({
+            url:'dashboard/authUser',
+            type: "POST",
+            error: function(){
+               alert('An error occured, please try again');
+               $('.fa-spin').hide();
+            },
+            data: $('#loginForm').serialize(),
+            success:function(data) {
+               $('.fa-spin').hide();
+               if(data.status == 'ok') {
+                  window.location.href = 'dashboard'
+               } else {
+                $('#response').html(data.status)
+               }
+            }
+         })
+    })
+
+  });
+</script>

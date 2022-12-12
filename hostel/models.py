@@ -4,16 +4,16 @@ from django.db import models
 class Users(models.Model):
   name = models.CharField(max_length=255)
   reg_number = models.CharField(max_length=255)
-  passcode = models.CharField(max_length=255)
+  passcode = models.CharField(max_length=255, null=True)
   department = models.CharField(max_length=70)
   faculty = models.CharField(max_length=70)
   email = models.CharField(max_length=255)
-  dob = models.CharField(max_length=70)
-  session = models.CharField(max_length=15)
-  semester = models.CharField(max_length=70)
-  passport = models.CharField(max_length=70)
-  program_type = models.CharField(max_length=70)
-  rrr = models.IntegerField(max_length=20)
+  dob = models.CharField(max_length=70, null=True)
+  session = models.CharField(max_length=15, null=True)
+  semester = models.CharField(max_length=70, null=True)
+  passport = models.CharField(max_length=70, null=True)
+  program_type = models.CharField(max_length=70, null=True)
+  rrr = models.IntegerField(null=True)
   app_status = models.CharField(max_length=15)
 
 
@@ -29,3 +29,10 @@ class Applications(models.Model):
   session = models.CharField(max_length=20)
   status = models.CharField(max_length=15)
   date = models.CharField(max_length=50)
+
+class Spaces(models.Model):
+  room = models.CharField(max_length=100, null=True)
+  hostel = models.CharField(max_length=255, null=True)
+  room_id = models.CharField(max_length=20, null=True)
+  bunk_id = models.CharField(max_length=20, null=True)
+  

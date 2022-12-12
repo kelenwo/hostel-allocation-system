@@ -51,8 +51,18 @@ def login(request):
     return HttpResponse(template.render({}, request))
     
 def getRoom(request):
-    post = request.POST
     
+    post = request.POST
+    findroom = Rooms.objects.filter(hostel = post['hostel']).values()
+    return JsonResponse({"rooms": list(findroom)})
+
+def getBunk(request):
+    
+    post = request.POST
+    findbunk = Spaces.objects.filter(hostel = post['hostel'], room=post['room']).values()
+    return JsonResponse({"rooms": list(findbunk)})
+
+
 def auth(request):
     post = request.POST  
     status = ''  

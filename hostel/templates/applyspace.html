@@ -20,7 +20,7 @@
                     <h3 class="h3 mb-0 text-gray-800">Apply for hostel</h3>
                     <hr/>
                   </div> 
-
+                  <form id="hostelForm">
             <div class="row">
               <div class="col-md-6 my-3">
                 <label>Hostel</label>
@@ -28,25 +28,25 @@
                   <div class="input-group-prepend">
                     <span class="input-group-text" id="basic-addon1"><i class="fa fa-th-large"></i></span>
                   </div>
-                  <select class="form-control" id="hostel">
+                  <select class="form-control" id="hostel"  name="hostel">
                     <option>-- select hostel --</option>
                   </select>
                 </div>
               </div>
-
+              {% csrf_token %}
               <div class="col-md-6 my-3">
                 <label>Room <i class="fa text-success fa-spinner fa-spin" id="loadingRoom"></i></label>
                 <div class="input-group mb-3">
                   <div class="input-group-prepend">
                     <span class="input-group-text" id="basic-addon1"><i class="fa fa-th-large"></i></span>
                   </div>
-                  <select class="form-control text-capitalize" id="rooms">
+                  <select class="form-control text-capitalize" id="rooms" name="rooms">
                     <option>-- select room --</option>
 
                   </select>
                 </div>
               </div>
-
+            </form>
               <div class="col-md-12 d-none" id="showRooms">
                 <div class="card shadow p-5 my-3">
                   <div class="col-md-3">
@@ -129,18 +129,7 @@
             "name": "Female Presidential Hostel"
 
         }
-    ],
-    "rooms" : [
-        {
-            "hostel": "mph",
-            "rooms": ["A1","A2","B1","B2","C1","C2","D1","D2","E1","E2","G1","G2"] 
-        },
-        {
-            "hostel": "fph",
-            "rooms": ["A1","A2","B1","B2","C1","C2","D1","D2","E1","E2","G1","G2"] 
-        }
-    ],
-    "room" : ["Room 1","Room 2", "room 3", "room 4", "room 5", "room 6"] 
+    ]
 
 };
 </script>
@@ -160,35 +149,59 @@ $(document).ready(function() {
      $('#hostel').on('change',function() {
       $('#loadingRoom').show();
       var res = $('#hostel').val();
-      window.setTimeout(function (){
-        $('#loadingRoom').hide();
-        for (let i = 0; i < config.room.length; i++) { 
-        $('#rooms').append($('<option>', {
-              value: config.room[i],
-              text: config.room[i],
-            }));
-     }
-      }, 1000);
+      $.ajax({
+            url:'/getRoom',
+            type: "POST",
+            error: function(){
+               alert('An error occured, please try again');
+               $('.fa-spin').hide();
+            },
+            data: $('#hostelForm').serialize(),
+            success:function(data) {
+               $('.fa-spin').hide();
+              //  alert(data.rooms[0].room);
+                for (let i = 0; i < data.rooms.length; i++) { 
+                  $('#rooms').append($('<option>', {
+                        value: data.rooms[i].room_id,
+                        text: data.rooms[i].room,
+                      }));
+              }
+            }
+         })
+    //   window.setTimeout(function (){
+    //     $('#loadingRoom').hide();
+    //     for (let i = 0; i < config.room.length; i++) { 
+    //     $('#rooms').append($('<option>', {
+    //           value: config.room[i],
+    //           text: config.room[i],
+    //         }));
+    //  }
+    //   }, 1000);
 
      });
 
      $('#rooms').on('change',function() {
       $('#loadingRoom').show();
       var roomId = this.value;
-      window.setTimeout(function (){
-        $('#loadingRoom').hide();
-        $('#roomId').text(roomId);
-        $('#showRooms').removeClass('d-none');
-
-      }, 1000);
-
-    //   var res = $('#hostel').val();
-    //   for (let i = 0; i < config.room.length; i++) { 
-    //     $('#rooms').append($('<option>', {
-    //           value: config.rooms[i],
-    //           text: config.room[i],
-    //         }));
-    //  }
+      $.ajax({
+            url:'/getbunk',
+            type: "POST",
+            error: function(){
+               alert('An error occured, please try again');
+               $('.fa-spin').hide();
+            },
+            data: $('#hostelForm').serialize(),
+            success:function(data) {
+               $('.fa-spin').hide();
+              //  alert(data.rooms[0].room);
+                for (let i = 0; i < data.rooms.length; i++) { 
+                  $('#rooms').append($('<option>', {
+                        value: data.rooms[i].room_id,
+                        text: data.rooms[i].room,
+                      }));
+              }
+            }
+         })
      });
 });
 </script>

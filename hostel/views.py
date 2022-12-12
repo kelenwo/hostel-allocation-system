@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.template import loader
 from django.contrib.sessions.models import Session
 from django.http import JsonResponse, HttpResponse
@@ -8,6 +8,11 @@ from .models import *
 
 
 def index(request):
+
+    try:
+        print(request.session['user'])
+    except KeyError:
+        return redirect('/')
     context = {
     'session': request.session['user']
         }
@@ -16,6 +21,12 @@ def index(request):
     return HttpResponse(template.render(context, request))
 
 def availableSpace(request):
+
+    try:
+        print(request.session['user'])
+    except KeyError:
+        return redirect('/')
+
     context = {
     'session': request.session['user']
         }
@@ -23,13 +34,36 @@ def availableSpace(request):
     return HttpResponse(template.render(context, request))
 
 def applicationStatus(request):
+    try:
+        print(request.session['user'])
+    except KeyError:
+        return redirect('/')
+
+    find = Applications.objects.filter(reg_number=request.session['user']['reg_number'])
+    apps = False
+    bunk = False
+    room = False
+    if len(find) > 0:
+       apps = find[0]
+       bunk = apps.bunk_id,
+       room = apps.room_id.replace('rm', 'Room ')
+
+
     context = {
-    'session': request.session['user']
-        }
-    template = loader.get_template('spaces.html')
+    'session': request.session['user'],
+    'apps': apps,
+    'bunk': bunk,
+    'room': room
+    }
+    template = loader.get_template('appstatus.html')
     return HttpResponse(template.render(context, request))
 
 def submitApplication(request):
+    try:
+        print(request.session['user'])
+    except KeyError:
+        return redirect('/')
+
     context = {
     'session': request.session['user']
         }
@@ -37,9 +71,27 @@ def submitApplication(request):
     return HttpResponse(template.render(context, request))
 
 def hostelApplication(request):
+    try:
+        print(request.session['user'])
+    except KeyError:
+        return redirect('/')
+
+    find = Applications.objects.filter(reg_number=request.session['user']['reg_number'])
+    apps = ''
+    bunk = ''
+    room = ''
+    if len(find) > 0:
+       apps = find[0]
+       bunk = apps.bunk_id,
+       room = apps.room_id.replace('rm', 'Room ')
+
+
     context = {
-    'session': request.session['user']
-        }
+    'session': request.session['user'],
+    'apps': apps,
+    'bunk': bunk,
+    'room': room
+    }
     template = loader.get_template('apply.html')
     return HttpResponse(template.render(context, request))
 
@@ -59,8 +111,9 @@ def getRoom(request):
 def getBunk(request):
     
     post = request.POST
-    findbunk = Spaces.objects.filter(hostel = post['hostel'], room=post['room']).values()
-    return JsonResponse({"rooms": list(findbunk)})
+    findbunk = Spaces.objects.filter(hostel = post['hostel'], room_id=post['rooms']).values()
+    # print(findbunk[1])
+    return JsonResponse({"bunk": list(findbunk)})
 
 
 def auth(request):
@@ -116,8 +169,11 @@ def auth(request):
                 arr = []
                 for link in html2.find_all('input'):
                     arr.append(link.get('placeholder'))
-                print(arr)   
-                user = Users(name=arr[1], reg_number=post["reg_number"], passcode=post["passcode"],
+
+                findimg = html2.find_all('img')
+                img = findimg[1].get('src')
+                # print(arr)   
+                user = Users(name=arr[1], reg_number=post["reg_number"], passcode=post["passcode"], passport=img,
                             faculty=arr[2], email=arr[3], program_type=arr[4],dob=arr[5],department=arr[6],semester=arr[7])
                 
                 user.save()
@@ -148,8 +204,11 @@ def auth(request):
             arr = []
             for link in html2.find_all('input'):
                 arr.append(link.get('placeholder'))
-            print(arr)   
-            user = Users(name=arr[1], reg_number=post["reg_number"], passcode=post["passcode"],
+            # print(arr) 
+
+            findimg = html2.find_all('img')
+            img = findimg[1].get('src')  
+            user = Users(name=arr[1], reg_number=post["reg_number"], passcode=post["passcode"], passport=img,
                         faculty=arr[2], email=arr[3], program_type=arr[4],dob=arr[5],department=arr[6],semester=arr[7])
             
             user.save()
@@ -164,6 +223,19 @@ def auth(request):
     # template = loader.get_template('login.html')
     # return HttpResponse(template.render())
 
+def saveApplication(request):
+    post = request.POST
+    user = request.session['user']
+    # print(user['name'])
+    apps = Applications(name=user['name'],reg_number=user['reg_number'],department=user['department'],faculty=user['faculty'],hostel=post['hostel'],
+                bunk_id=post['bunk_id'],room_id=post['rooms'],email=user['email'],status='approved')
+
+    apps.save()
+    space = Spaces.objects.get(bunk_id=post['bunk_id'], room_id=post['rooms'], hostel=post['hostel'])
+    space.status = 1
+    space.save()
+    return JsonResponse({"status": 'success'})
+
 def createRooms(request):
     arr = ['A1','A2','B1','B2','C1','C2','D1','D2']
     arr2 = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24]
@@ -171,3 +243,7 @@ def createRooms(request):
         for i in arr:
             rooms = Spaces(room='Room '+str(num),hostel='mph', room_id='rm'+str(num), bunk_id=i)
             rooms.save()
+
+def logout(request):
+    request.session.flush()
+    return redirect('/')

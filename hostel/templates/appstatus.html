@@ -16,39 +16,38 @@
               <div class="card border-top-info shadow mb-4">
                   <div class="card-body p-5 ">
                   <div class="col-md-6">
-                    <h3 class="h3 mb-0 text-gray-800">Hostel Application</h3>
+                    <h3 class="h3 mb-0 text-gray-800">Application Status</h3>
                     <hr/>
                   </div> 
 
             <div class="row">
               <div class="col-md-9">
-                <div class="col-md-12">
-                  <!-- <input dtype="text" class="form-control bg-white" readonly > -->
-                  <label>Student's Name</label>
-                  <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text" id="basic-addon1"><i class="fa fa-th-large"></i></span>
+                    <div class="col-md-12">
+                      <!-- <input dtype="text" class="form-control bg-white" readonly > -->
+                      <label>Student's Name</label>
+                      <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text" id="basic-addon1"><i class="fa fa-th-large"></i></span>
+                        </div>
+                        <input type="text" class="form-control" placeholder="{{ session.name }}" >
+                      </div>
                     </div>
-                    <input type="text" class="form-control" placeholder="{{ session.name }}" >
-                  </div>
-                </div>
 
-                <div class="col-md-12">                 
-                  <label>Registration Number</label>
-                  <div class="input-group mb-3">
-                    <div class="input-group-prepend">
-                      <span class="input-group-text" id="basic-addon1"><i class="fa fa-th-large"></i></span>
-                    </div>
-                    <input type="text" class="form-control text-uppercase" placeholder="{{ session.reg_number }}">
-                  </div></div>
-                </div> 
-                <div class="col-md-3">
-                  <legend><i class="fa fa-picture-o" aria-hidden="true"></i>
-                  Passport</legend>
-                  <address>
-                  <img src="https://uniuyo.edu.ng/eportals/{{ session.passport}}" alt="Pics" height="130px" width="150px"></address>
-                  </div>
-
+                    <div class="col-md-12">                 
+                      <label>Registration Number</label>
+                      <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text" id="basic-addon1"><i class="fa fa-th-large"></i></span>
+                        </div>
+                        <input type="text" class="form-control text-uppercase" placeholder="{{ session.reg_number }}">
+                      </div></div>
+                    </div> 
+                    <div class="col-md-3">
+                      <legend><i class="fa fa-picture-o" aria-hidden="true"></i>
+                      Passport</legend>
+                      <address>
+                      <img src="https://uniuyo.edu.ng/eportals/{{ session.passport}}" alt="Pics" height="130px" width="150px"></address>
+                      </div>
                       <div class="col-md-6 mb-3">
                         <label>Semester</label>
                         <div class="input-group mb-3">
@@ -72,6 +71,7 @@
                             </select>
                           </div>
                       </div>
+
                   {% if apps %}
                       <div class="col-md-6">
                         <label>Room</label>
@@ -96,23 +96,9 @@
                   </div>
                 {% else %}
                       <div class="col-md-12">
-                        <label>RRR</label><br>
-                        <small class="text-primary">(Input Your fee payment RRR to verify your payment status)</small>
-                        <br>
-                        <div class="input-group mb-3">
-                          <div class="input-group-prepend">
-                            <span class="input-group-text" id="basic-addon1"><i class="fa fa-th-large"></i></span>
-                          </div>
-                          <input type="text" class="form-control" placeholder="RRR" >
+                        <div class="mx-2">
+                          <a class="btn btn-success btn-block" href="/dashboard/hostel-application">Apply For Space &nbsp;&nbsp;<i class="fa fa-external-link-alt"></i></a>
                         </div>
-                    </div>
-                    <div class="col-md-12 my-1 d-none" id="validated">
-                      <span class="text-success">RRR validated, Redirecting...</span>
-                    </div>
-
-
-                      <div class="col-md-6">
-                        <button class="btn btn-primary px-5" type="button" id="submit">Validate RRR &nbsp;<i class="fa fa-cog fa-spin" id="loading"></i></button>
                       </div>
                   {% endif %}
                       </div>

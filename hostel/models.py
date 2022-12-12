@@ -35,6 +35,7 @@ class Spaces(models.Model):
   hostel = models.CharField(max_length=255, null=True)
   room_id = models.CharField(max_length=20, null=True)
   bunk_id = models.CharField(max_length=20, null=True)
+  status = models.IntegerField(null=True)
 
 class Rooms(models.Model):
   room = models.CharField(max_length=100, null=True)

@@ -81,7 +81,7 @@ DATABASES = {
         'NAME': 'hostel',
         'USER': 'root',
         'PASSWORD': '',
-        'HOST': '192.168.115.63',
+        # 'HOST': '127.0.0.1',
         'PORT': '3306',
         'OPTIONS': {
             'read_default_file': '/etc/mysql/my.cnf',

@@ -9,6 +9,8 @@ urlpatterns = [
     path('dashboard/application-status', views.applicationStatus, name='applicationStatus'),
     path('', views.login, name='login'),
     path('dashboard/authUser', views.auth, name='auth'),
+    path('dashboard/logout', views.logout, name='logout'),
     path('getRoom', views.getRoom, name='getRoom'), 
     path('getBunk', views.getBunk, name='getBunk'),
+    path('saveApplication', views.saveApplication, name='saveApplication'),
 ]

@@ -14,4 +14,5 @@ urlpatterns = [
     path('getBunk', views.getBunk, name='getBunk'),
     path('saveApplication', views.saveApplication, name='saveApplication'),
     path('create-bunk', views.createRooms, name='createRooms'),
+    path('create-rooms', views.createRoom, name='createRoom'),
 ]

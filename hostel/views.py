@@ -241,9 +241,10 @@ def createRooms(request):
     arr2 = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24]
     for num in arr2:
         for i in arr:
-            rooms = Spaces(room='Room '+str(num),hostel='mph', room_id='rm'+str(num), bunk_id=i)
+            rooms = Spaces(room='Room '+str(num),hostel='fph', room_id='rm'+str(num), bunk_id=i)
             rooms.save()
-
+    return redirect('/')
+    
 def logout(request):
     request.session.flush()
     return redirect('/')

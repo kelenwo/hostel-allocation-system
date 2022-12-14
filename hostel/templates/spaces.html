@@ -20,7 +20,7 @@
                     <h3 class="h3 mb-0 text-gray-800">Available Spaces</h3>
                     <hr/>
                   </div> 
-
+                  <form method='post' action="/dashboard/hostel-application" id="hostelForm">
             <div class="row">
               <div class="col-md-12 my-2">
                 <label>Hostel <i class="fa fa-spinner fa-spin text-success" id="loading"></i></label>
@@ -28,24 +28,10 @@
                   <div class="input-group-prepend">
                     <span class="input-group-text" id="basic-addon1"><i class="fa fa-th-large"></i></span>
                   </div>
-                  <select class="form-control" id="hostel">
+                  <select class="form-control" id="hostel" name="hostel">
                     <option>-- select hostel --</option>
-                    <option value="Male Presidential Hostel">Male Presidential Hostel</option>
-                    <option value="Female Presidential Hostel">Female Presidential Hostel</option>
-                  </select>
-                </div>
-              </div>
-
-              <div class="col-md-6 my-3 d-none">
-                <label>Room</label>
-                <div class="input-group mb-3">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text" id="basic-addon1"><i class="fa fa-th-large"></i></span>
-                  </div>
-                  <select class="form-control">
-                    <option>-- select room --</option>
-                    <option value="male">Room 1</option>
-                    <option value="female">Room 2</option>
+                    <option value="mph">Male Presidential Hostel</option>
+                    <option value="fph">Female Presidential Hostel</option>
                   </select>
                 </div>
               </div>
@@ -56,92 +42,117 @@
                     <hr/>
                   </div> 
                   <div class="">
-                    <div class="border row">
-                        <div class="col-md-1 btn btn-success text-center border border-right-info px-1 py-3">
-                          RM 1
-                        </div>
-                        <div class="col-md-1 btn btn-success text-center border border-right-info px-1 py-3">
-                          RM 2
-                        </div>
-                        <div class="col-md-1 btn btn-success text-center border border-right-info px-1 py-3">
-                          RM 3
-                        </div>
-                        <div class="col-md-1 btn btn-success text-center border border-right-info px-1 py-3">
-                          RM 4
-                        </div>
-                        <div class="col-md-1 btn btn-success text-center border border-right-info px-1 py-3">
-                          RM 5
-                        </div>
-                        <div class="col-md-1 btn btn-success text-center border border-right-info px-1 py-3">
-                          RM 6
-                        </div>
-                        <div class="col-md-1 btn btn-success text-center border border-right-info px-1 py-3">
-                          RM 7
-                        </div>
-                        <div class="col-md-1 btn btn-danger text-white text-center border border-right-info px-1 py-3">
-                          RM 8
-                        </div>
-                        <div class="col-md-1 btn btn-success text-center border border-right-info px-1 py-3">
-                          RM 9
-                        </div>
-                        <div class="col-md-1 btn btn-success text-center border border-right-info px-1 py-3">
-                          RM 10
-                        </div>
-                        <div class="col-md-1 btn btn-success text-center border border-right-info px-1 py-3">
-                          RM 11
-                        </div>
-                        <div class="col-md-1 btn btn-success text-center border border-right-info px-1 py-3">
-                          RM 12
-                        </div>
+                    <div class="border row text-uppercase">
+                        <label for="rm1" class="col-md-1 btn btn-success text-center border border-right-info px-1 py-3">
+                          rm 1 <br><span class="badge badge-light rm1"></span>
+                          <input type="radio" name="room_id" id="rm1" class="d-none" autocomplete="off">
+                        </label>
+                        <label for="rm2" class="col-md-1 btn btn-success text-center border border-right-info px-1 py-3">
+                          rm 2 <br><span class="badge badge-light rm2"></span>
+                          <input type="radio" name="room_id" id="rm2" class="d-none" autocomplete="off">
+                        </label> 
+                        <label for="rm3" class="col-md-1 btn btn-success text-center border border-right-info px-1 py-3">
+                          rm 3 <br><span class="badge badge-light rm3"></span>
+                          <input type="radio" name="room_id" id="rm1" class="d-none" autocomplete="off">
+                        </label>
+                        <label for="rm4" class="col-md-1 btn btn-success text-center border border-right-info px-1 py-3">
+                          rm 4 <br><span class="badge badge-light rm4"></span>
+                          <input type="radio" name="room_id" id="rm4" class="d-none" autocomplete="off">
+                        </label>
+                        <label for="rm5" class="col-md-1 btn btn-success text-center border border-right-info px-1 py-3">
+                          rm 5 <br><span class="badge badge-light rm5"></span>
+                          <input type="radio" name="room_id" id="rm5" class="d-none" autocomplete="off">
+                        </label>
+                        <label for="rm6" class="col-md-1 btn btn-success text-center border border-right-info px-1 py-3">
+                          rm 6 <br><span class="badge badge-light rm6"></span>
+                          <input type="radio" name="room_id" id="rm6" class="d-none" autocomplete="off">
+                        </label>
+                        <label for="rm7" class="col-md-1 btn btn-success text-center border border-right-info px-1 py-3">
+                          rm 7 <br><span class="badge badge-light rm7"></span>
+                          <input type="radio" name="room_id" id="rm7" class="d-none" autocomplete="off">
+                        </label>
+                        <label for="rm8" class="col-md-1 btn btn-success text-center border border-right-info px-1 py-3">
+                          rm 8 <br><span class="badge badge-light rm8"></span>
+                          <input type="radio" name="room_id" id="rm8" class="d-none" autocomplete="off">
+                        </label>
+                        <label for="rm9" class="col-md-1 btn btn-success text-center border border-right-info px-1 py-3">
+                          rm 9 <br><span class="badge badge-light rm9"></span>
+                          <input type="radio" name="room_id" id="rm9" class="d-none" autocomplete="off">
+                        </label>
+                        <label for="rm10" class="col-md-1 btn btn-success text-center border border-right-info px-1 py-3">
+                          rm 10 <br><span class="badge badge-light rm10"></span>
+                          <input type="radio" name="room_id" id="rm10" class="d-none" autocomplete="off">
+                        </label>
+                        <label for="rm11" class="col-md-1 btn btn-success text-center border border-right-info px-1 py-3">
+                          rm 11 <br><span class="badge badge-light rm11"></span>
+                          <input type="radio" name="room_id" id="rm11" class="d-none" autocomplete="off">
+                        </label>
+                        <label for="rm12" class="col-md-1 btn btn-success text-center border border-right-info px-1 py-3">
+                          rm 12 <br><span class="badge badge-light rm12"></span>
+                          <input type="radio" name="room_id" id="rm12" class="d-none" autocomplete="off">
+                        </label>
 
                         <div class="col-md-12 text-center border border-right-info p-4">
                           <h3 id="roomId"></h3>
                         </div>
-                        <div class="col-md-1 btn btn-danger text-center border border-right-info px-1 py-3">
-                          RM 13
-                        </div>
-                        <div class="col-md-1 btn btn-success text-center border border-right-info px-1 py-3">
-                          RM 14
-                        </div>
-                        <div class="col-md-1 btn btn-success text-center border border-right-info px-1 py-3">
-                          RM 15
-                        </div>
-                        <div class="col-md-1 btn btn-success text-center border border-right-info px-1 py-3">
-                          RM 16
-                        </div>
-                        <div class="col-md-1 btn btn-danger text-white text-center border border-right-info px-1 py-3">
-                          RM 17
-                        </div>
-                        <div class="col-md-1 btn btn-success text-center border border-right-info px-1 py-3">
-                          RM 18
-                        </div>
-                        <div class="col-md-1 btn btn-success text-center border border-right-info px-1 py-3">
-                          RM 19
-                        </div>
-                        <div class="col-md-1 btn btn-success text-center border border-right-info px-1 py-3">
-                          RM 20
-                        </div>
-                        <div class="col-md-1 btn btn-success text-center border border-right-info px-1 py-3">
-                          RM 21
-                        </div>
-                        <div class="col-md-1 btn btn-success text-center border border-right-info px-1 py-3">
-                          RM 22
-                        </div>
-                        <div class="col-md-1 btn btn-success text-center border border-right-info px-1 py-3">
-                          RM 23
-                        </div>
-                        <div class="col-md-1 btn btn-success text-center border border-right-info px-1 py-3">
-                          RM 24
-                        </div>
+                        <label for="rm13" class="col-md-1 btn btn-success text-center border border-right-info px-1 py-3">
+                          rm 13 <br><span class="badge badge-light rm13"></span>
+                          <input type="radio" name="room_id" id="rm13" class="d-none" autocomplete="off">
+                        </label>
+                        <label for="rm14" class="col-md-1 btn btn-success text-center border border-right-info px-1 py-3">
+                          rm 14 <br><span class="badge badge-light rm14"></span>
+                          <input type="radio" name="room_id" id="rm14" class="d-none" autocomplete="off">
+                        </label>
+                        <label for="rm15" class="col-md-1 btn btn-success text-center border border-right-info px-1 py-3">
+                          rm 15 <br><span class="badge badge-light rm15"></span>
+                          <input type="radio" name="room_id" id="rm15" class="d-none" autocomplete="off">
+                        </label>
+                        <label for="rm16" class="col-md-1 btn btn-success text-center border border-right-info px-1 py-3">
+                          rm 16 <br><span class="badge badge-light rm16"></span>
+                          <input type="radio" name="room_id" id="rm16" class="d-none" autocomplete="off">
+                        </label>
+                        <label for="rm17" class="col-md-1 btn btn-success text-center border border-right-info px-1 py-3">
+                          rm 17 <br><span class="badge badge-light rm17"></span>
+                          <input type="radio" name="room_id" id="rm17" class="d-none" autocomplete="off">
+                        </label>
+                        <label for="rm18" class="col-md-1 btn btn-success text-center border border-right-info px-1 py-3">
+                          rm 18 <br><span class="badge badge-light rm18"></span>
+                          <input type="radio" name="room_id" id="rm18" class="d-none" autocomplete="off">
+                        </label>
+                        <label for="rm19" class="col-md-1 btn btn-success text-center border border-right-info px-1 py-3">
+                          rm 19 <br><span class="badge badge-light rm19"></span>
+                          <input type="radio" name="room_id" id="rm19" class="d-none" autocomplete="off">
+                        </label>
+                        <label for="rm20" class="col-md-1 btn btn-success text-center border border-right-info px-1 py-3">
+                          rm 20 <br><span class="badge badge-light rm20"></span>
+                          <input type="radio" name="room_id" id="rm1" class="d-none" autocomplete="off">
+                        </label>
+                        <label for="rm21" class="col-md-1 btn btn-success text-center border border-right-info px-1 py-3">
+                          rm 21 <br><span class="badge badge-light rm21"></span>
+                          <input type="radio" name="room_id" id="rm1" class="d-none" autocomplete="off">
+                        </label>
+                        <label for="rm22" class="col-md-1 btn btn-success text-center border border-right-info px-1 py-3">
+                          rm 22 <br><span class="badge badge-light rm22"></span>
+                          <input type="radio" name="room_id" id="rm22" class="d-none" autocomplete="off">
+                        </label>
+                        <label for="rm23" class="col-md-1 btn btn-success text-center border border-right-info px-1 py-3">
+                          rm 23 <br><span class="badge badge-light rm23"></span>
+                          <input type="radio" name="room_id" id="rm23" class="d-none" autocomplete="off">
+                        </label>
+                        <label for="rm24" class="col-md-1 btn btn-success text-center border border-right-info px-1 py-3">
+                          rm 24 <br><span class="badge badge-light rm24"></span>
+                          <input type="radio" name="room_id" id="rm24" class="d-none" autocomplete="off">
+                        </label>
                       </div>
-
+                      {% csrf_token %}
                   </div>
                 </div>
                 <div class="mx-2">
-                  <a class="btn btn-secondary btn-block" href="/dashboard/hostel-application">Apply For Space &nbsp;&nbsp;<i class="fa fa-external-link-alt"></i></a>
+                  <button type="submit" id="sendform" class="d-none"></button>
+                  <button class="btn btn-secondary btn-block" id="submit">Apply For Space &nbsp;&nbsp;<i class="fa fa-external-link-alt"></i></button>
                 </div>
               </div>
-
+            </form>
 <!-- 
                    <div class="col-md-6">
                         <button class="btn btn-primary px-5" type="button">Validate RRR &nbsp;<i class="fa fa-cog fa-spin"></i></button>
@@ -159,17 +170,50 @@
 
         $(document).ready(function() {
           $('#loading').hide();
-        
+          $('label').on('click', function() {
+            $('label').removeClass('active');
+            $(this).addClass('active');
+          })
              $('#hostel').on('change',function() {
               $('#loading').show();
               var roomId = this.value;
-              window.setTimeout(function (){
-                $('#loading').hide();
-                $('#roomId').text(roomId);
+              var arr = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24]
+              $.ajax({
+            url:'/getRooms',
+            type: "POST",
+            error: function(){
+               alert('An error occured, please try again');
+               $('.fa-spin').hide();
+            },
+            data: $('#hostelForm').serialize(),
+            success:function(data) {
+               $('.fa-spin').hide();
+
+                for (let i = 0; i < data.rooms.length; i++) { 
+                  $('#'+data.rooms[i].room_id).val(data.rooms[i].room_id);
+                  var count = 8 - data.rooms[i].room_count
+                   $("."+data.rooms[i].room_id).text(count);
+              }
+              $('#loading').hide();
+                $('#roomId').text(data.rooms[0].hostel);
                 $('#showRooms').removeClass('d-none');
-        
-              }, 1000);
+            }
+         });
+
              });
+
+      $('#submit').on('click',function() {
+      var res = $('#hostel').val();
+
+      if($('input[name=room_id]').is(':checked')) {
+               $('#sendform').trigger('click');
+            }
+      else {
+        alert('You must select a Room');
+
+
+      }
+});
         });
         </script>
 {% endblock %} 

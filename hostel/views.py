@@ -8,7 +8,6 @@ from .models import *
 
 
 def index(request):
-
     try:
         print(request.session['user'])
     except KeyError:
@@ -108,6 +107,26 @@ def getRoom(request):
     findroom = Rooms.objects.filter(hostel = post['hostel']).values()
     print(list(findroom))
     return JsonResponse({"rooms": list(findroom)})
+
+def getRooms(request):
+    
+    post = request.POST
+    findroom = Rooms.objects.filter(hostel = post['hostel']).values()
+    # print(list(findroom))
+    # print(findroom[1]['room_id'])
+    array = []
+    for room in findroom:
+        countroom = Applications.objects.filter(room_id = room['room_id']).count()
+        h = ''
+        if room['hostel'] == 'mph':
+            h = 'Male Presidential Hostel'
+        else:
+            h = 'Female Presidential Hostel'
+        arr = {'id': room['id'],'room_id': room['room_id'], 'room': room['room'], 'room_count':countroom, 'hostel': h}
+        array.append(arr)
+    # print(array)
+
+    return JsonResponse({"rooms": array})
 
 def getBunk(request):
     

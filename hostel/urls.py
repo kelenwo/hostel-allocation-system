@@ -11,6 +11,7 @@ urlpatterns = [
     path('dashboard/authUser', views.auth, name='auth'),
     path('dashboard/logout', views.logout, name='logout'),
     path('getRoom', views.getRoom, name='getRoom'), 
+    path('getRooms', views.getRooms, name='getRooms'),
     path('getBunk', views.getBunk, name='getBunk'),
     path('saveApplication', views.saveApplication, name='saveApplication'),
     path('create-bunk', views.createRooms, name='createRooms'),
